@@ -1,13 +1,13 @@
 //Led indicates hit.
-#define LED_PIN  6
+#define LED 6
 
 //Player1.
-#define P1_1 6
-#define P1_2 7
-#define P1_3 8
-#define P1_4 9
-#define P1_5 10
-#define P1_6 11
+#define P1_1 40
+#define P1_2 41
+#define P1_3 42
+#define P1_4 43
+#define P1_5 44
+#define P1_6 45
 
 //Player2.
 #define P2_1 12
@@ -17,44 +17,52 @@
 #define P2_5 16
 #define P2_6 17
 
-boolean ButtonPressed1;
+boolean hitDetection;
 
 void setup() {
-  ButtonPressed1 = false;
-  pinMode(LED_PIN, OUTPUT); 
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
-  Serial.begin(38400);
-  if (digitalRead(BUTTON_PIN)) {
-    ButtonPressed1 = false;
+  Serial.begin(9600);
+  hitDetection = false;
+  pinMode(LED, OUTPUT);
+  
+  pinMode(P1_1, INPUT_PULLUP);
+  pinMode(P1_2, INPUT_PULLUP);
+  pinMode(P1_3, INPUT_PULLUP);
+  pinMode(P1_4, INPUT_PULLUP);
+  pinMode(P1_5, INPUT_PULLUP);
+  pinMode(P1_6, INPUT_PULLUP);
+  
+  pinMode(P2_1, INPUT_PULLUP);
+  pinMode(P2_2, INPUT_PULLUP);
+  pinMode(P2_3, INPUT_PULLUP);
+  pinMode(P2_4, INPUT_PULLUP);
+  pinMode(P2_5, INPUT_PULLUP);
+  pinMode(P2_6, INPUT_PULLUP);
+  
+  if (digitalRead(P1_1)) {
+    hitDetection = true;
+  }
+  else {
+    hitDetection = false;
   }
 }
 
 void loop() {
   //Button is not pressed.  
-  if (digitalRead(BUTTON_PIN)) {
-    if (ButtonPressed1) {
-      ButtonPressed1 = false;
-      digitalWrite(LED_PIN, LOW);
-      //Keyboard.set_modifier(0);
-     // Mouse.set_key1(0);            //Mouse release
-     
-      //Keyboard.set_key1(0);          // release key
-      //Keyboard.send_now();  
-      Serial.println("Button is no longer pressed.");
-    } 
-  }
-  
-  //Button is pressed.
-  else {  
-    if (!ButtonPressed1) {  // If the last state was different,
-      ButtonPressed1 = true;
-      digitalWrite(LED_PIN, HIGH);   // set the LED on
-      //Keyboard.set_modifier(MODIFIERKEY_SHIFT | MODIFIERKEY_CTRL);
-      Mouse.click();            //Mouse press
-      
-      //Keyboard.set_key1(KEY_T);      //Press key
-      //Keyboard.send_now();
-      Serial.println("Button is pressed!");
+  if (digitalRead(P1_1)) {
+    if (!hitDetection) {
+      hitDetection = true;
+      //Set the LED off.
+      digitalWrite(LED, LOW);
     }
   }
+  //Button is pressed.
+  else {
+    if (hitDetection) { 
+      hitDetection = false;
+      Serial.println("Hit!");
+      //Set the LED on.
+      digitalWrite(LED, HIGH);
+    }
+  }
+  delay(50);
 }
