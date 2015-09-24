@@ -9,6 +9,9 @@
 #define P1_5 44  //Pin 44.
 #define P1_6 45  //Pin 45.
 
+#define P1_L 38  //Left hand.
+#define P1_R 39  //Right hand.
+
 //Player2.
 #define P2_1 12  //Pin 12.
 #define P2_2 13  //Pin 13.
@@ -16,6 +19,9 @@
 #define P2_4 15  //Pin 15.
 #define P2_5 16  //Pin 16.
 #define P2_6 17  //Pin 17.
+
+#define P2_L 11  //Left hand.
+#define P2_R 10  //Right hand.
 
 //Player1.
 boolean hit_P1_1;  //Q Left upperarm.
@@ -45,33 +51,39 @@ void setup() {
   pinMode(P1_5, INPUT_PULLUP);
   pinMode(P1_6, INPUT_PULLUP);
   
-  //Player2
+  pinMode(P1_L, OUTPUT);
+  pinMode(P1_R, OUTPUT);
+  
+  //Player2.
   pinMode(P2_1, INPUT_PULLUP);
   pinMode(P2_2, INPUT_PULLUP);
   pinMode(P2_3, INPUT_PULLUP);
   pinMode(P2_4, INPUT_PULLUP);
   pinMode(P2_5, INPUT_PULLUP);
   pinMode(P2_6, INPUT_PULLUP);
+  
+  pinMode(P2_L, OUTPUT);
+  pinMode(P2_R, OUTPUT);
 
   if (digitalRead(P1_1) || digitalRead(P1_2) || digitalRead(P1_3)) {
-    hit_P1_1 = true;
-    hit_P1_2 = true;
-    hit_P1_3 = true;
+    hit_P1_1 = false;
+    hit_P1_2 = false;
+    hit_P1_3 = false;
   }
   if (digitalRead(P1_4) || digitalRead(P1_5) || digitalRead(P1_6)) {
-    hit_P1_4 = true;
-    hit_P1_5 = true;
-    hit_P1_6 = true;
+    hit_P1_4 = false;
+    hit_P1_5 = false;
+    hit_P1_6 = false;
   }
   if (digitalRead(P2_1) || digitalRead(P2_2) || digitalRead(P2_3)) {
-    hit_P2_1 = true;
-    hit_P2_2 = true;
-    hit_P2_3 = true;
+    hit_P2_1 = false;
+    hit_P2_2 = false;
+    hit_P2_3 = false;
   }
   if (digitalRead(P2_4) || digitalRead(P2_5) || digitalRead(P2_6)) {
-    hit_P2_4 = true;
-    hit_P2_5 = true;
-    hit_P2_6 = true;
+    hit_P2_4 = false;
+    hit_P2_5 = false;
+    hit_P2_6 = false;
   }
   
   else {
@@ -94,17 +106,62 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(P1_L, HIGH);
+  digitalWrite(P1_R, LOW);
+  digitalWrite(P2_L, HIGH);
+  digitalWrite(P2_R, LOW);
+  
+  checkInputs();
+  
+  digitalWrite(P1_L, LOW);
+  digitalWrite(P1_R, HIGH);
+  digitalWrite(P2_L, LOW);
+  digitalWrite(P2_R, HIGH);
+  
+  checkInputs();
+}
+
+void checkInputs() {
+  if(!digitalRead(P1_1) && digitalRead(P2_L)) {
+    if(!hit_P1_1) {
+      hit_P1_1 = true;
+      digitalWrite(LED, HIGH);
+      Keyboard.set_modifier(MODIFIERKEY_CTRL);
+      Keyboard.set_key1(KEY_Q);
+      Keyboard.send_now();
+      Serial.println("P1_HIT BY P2_LEFT");
+    }
+  }
+  if (digitalRead(P2_2) && digitalRead(P1_L)) {
+    //digitalWrite(LED, HIGH);
+  }
+  if (digitalRead(P2_3) && digitalRead(P1_L)) {
+    //digitalWrite(LED, HIGH);
+  }
+  if (digitalRead(P2_4) && digitalRead(P1_L)) {
+    //digitalWrite(LED, HIGH);
+  }
+  if (digitalRead(P2_5) && digitalRead(P1_L)) {
+    //digitalWrite(LED, HIGH);
+  }
+  if (digitalRead(P2_6) && digitalRead(P1_L)) {
+    //digitalWrite(LED, HIGH);
+  }
+  else {
+    if(hit_P1_1) {
+      hit_P1_1 = false;
+      digitalWrite(LED, LOW);
+      Keyboard.set_modifier(0);
+      Keyboard.set_key1(0);
+      Keyboard.send_now();
+    }
+  }
+}
+  /*
   //Hit is false.
   //PLayer1.
   if (digitalRead(P1_1)) {
-    if (!hit_P1_1) {
-      hit_P1_1 = true;
-      //Release key.
-      Keyboard.set_key1(0);
-      Keyboard.send_now();
-      //Set the LED off.
-      digitalWrite(LED, LOW);
-    }
+    
   }
   if (digitalRead(P1_2)) {
     if (!hit_P1_2) {
@@ -222,15 +279,7 @@ void loop() {
   //Hit is true.
   //Player1.
   if (!digitalRead(P1_1)) {
-    if (hit_P1_1) { 
-      hit_P1_1 = false;
-      Serial.println("Hit!");
-      //Press key.
-      Keyboard.set_key1(KEY_Q);
-      Keyboard.send_now();
-      //Set the LED on.
-      digitalWrite(LED, HIGH);
-    }
+    
   }
   if (!digitalRead(P1_2)) {
     if (hit_P1_2) { 
@@ -353,6 +402,4 @@ void loop() {
       //Set the LED on.
       digitalWrite(LED, HIGH);
     }
-  }
-  delay(50);
-}
+  }*/
