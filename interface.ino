@@ -128,92 +128,6 @@ void checkInputs() {
     if(!hit_P1_1) {
       hit_P1_1 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_CTRL);
-      Keyboard.set_key1(KEY_Q);
-      Keyboard.send_now();
-    }
-  }
-  if(!digitalRead(P1_2) && digitalRead(P2_L)) {
-    if(!hit_P1_2) {
-      hit_P1_2 = true;
-      digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_CTRL);
-      Keyboard.set_key1(KEY_W);
-      Keyboard.send_now();
-    }
-  }
-  if(!digitalRead(P1_3) && digitalRead(P2_L)) {
-    if(!hit_P1_3) {
-      hit_P1_3 = true;
-      digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_CTRL);
-      Keyboard.set_key1(KEY_E);
-      Keyboard.send_now();
-    }
-  }
-  if(!digitalRead(P1_4) && digitalRead(P2_L)) {
-    if(!hit_P1_4) {
-      hit_P1_4 = true;
-      digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_CTRL);
-      Keyboard.set_key1(KEY_S);
-      Keyboard.send_now();
-    }
-  }
-  if(!digitalRead(P1_5) && digitalRead(P2_L)) {
-    if(!hit_P1_5) {
-      hit_P1_5 = true;
-      digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_CTRL);
-      Keyboard.set_key1(KEY_U);
-      Keyboard.send_now();
-    }
-  }
-  if(!digitalRead(P1_6) && digitalRead(P2_L)) {
-    if(!hit_P1_6) {
-      hit_P1_6 = true;
-      digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_CTRL);
-      Keyboard.set_key1(KEY_I);
-      Keyboard.send_now();
-    }
-  }
-  else {
-    Keyboard.set_modifier(0);
-    Keyboard.set_key1(0);
-    Keyboard.send_now();
-    
-    if(hit_P1_1) {
-      hit_P1_1 = false;
-      digitalWrite(LED, LOW);
-    }
-    if(hit_P1_2) {
-      hit_P1_2 = false;
-      digitalWrite(LED, LOW);
-    }
-    if(hit_P1_3) {
-      hit_P1_3 = false;
-      digitalWrite(LED, LOW);
-    }
-    if(hit_P1_4) {
-      hit_P1_4 = false;
-      digitalWrite(LED, LOW);
-    }
-    if(hit_P1_5) {
-      hit_P1_5 = false;
-      digitalWrite(LED, LOW);
-    }
-    if(hit_P1_6) {
-      hit_P1_6 = false;
-      digitalWrite(LED, LOW);
-    }
-  }
-  
-  //Player 2 hits player 1 with his left hand.
-  if(!digitalRead(P1_1) && digitalRead(P2_L)) {
-    if(!hit_P1_1) {
-      hit_P1_1 = true;
-      digitalWrite(LED, HIGH);
       Keyboard.set_modifier(MODIFIERKEY_LEFT_CTRL);
       Keyboard.set_key1(KEY_Q);
       Keyboard.send_now();
@@ -264,7 +178,7 @@ void checkInputs() {
       Keyboard.send_now();
     }
   }
-  
+
   //Player 2 hits player 1 with his right hand.
   if(!digitalRead(P1_1) && digitalRead(P2_R)) {
     if(!hit_P1_1) {
@@ -326,8 +240,8 @@ void checkInputs() {
     if(!hit_P2_1) {
       hit_P2_1 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_Q);
+      Keyboard.set_modifier(MODIFIERKEY_LEFT_SHIFT);
+      Keyboard.set_key1(KEY_Y);
       Keyboard.send_now();
     }
   }
@@ -335,8 +249,8 @@ void checkInputs() {
     if(!hit_P2_2) {
       hit_P2_2 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_W);
+      Keyboard.set_modifier(MODIFIERKEY_LEFT_SHIFT);
+      Keyboard.set_key1(KEY_T);
       Keyboard.send_now();
     }
   }
@@ -344,8 +258,8 @@ void checkInputs() {
     if(!hit_P2_3) {
       hit_P2_3 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_E);
+      Keyboard.set_modifier(MODIFIERKEY_LEFT_SHIFT);
+      Keyboard.set_key1(KEY_A);
       Keyboard.send_now();
     }
   }
@@ -353,8 +267,8 @@ void checkInputs() {
     if(!hit_P2_4) {
       hit_P2_4 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_S);
+      Keyboard.set_modifier(MODIFIERKEY_LEFT_SHIFT);
+      Keyboard.set_key1(KEY_D);
       Keyboard.send_now();
     }
   }
@@ -362,8 +276,8 @@ void checkInputs() {
     if(!hit_P2_5) {
       hit_P2_5 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_U);
+      Keyboard.set_modifier(MODIFIERKEY_LEFT_SHIFT);
+      Keyboard.set_key1(KEY_O);
       Keyboard.send_now();
     }
   }
@@ -371,8 +285,8 @@ void checkInputs() {
     if(!hit_P2_6) {
       hit_P2_6 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_I);
+      Keyboard.set_modifier(MODIFIERKEY_LEFT_SHIFT);
+      Keyboard.set_key1(KEY_P);
       Keyboard.send_now();
     }
   }
@@ -382,8 +296,8 @@ void checkInputs() {
     if(!hit_P2_1) {
       hit_P2_1 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_Q);
+      Keyboard.set_modifier(MODIFIERKEY_RIGHT_SHIFT);
+      Keyboard.set_key1(KEY_Y);
       Keyboard.send_now();
     }
   }
@@ -391,8 +305,8 @@ void checkInputs() {
     if(!hit_P2_2) {
       hit_P2_2 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_W);
+      Keyboard.set_modifier(MODIFIERKEY_RIGHT_SHIFT);
+      Keyboard.set_key1(KEY_T);
       Keyboard.send_now();
     }
   }
@@ -400,8 +314,8 @@ void checkInputs() {
     if(!hit_P2_3) {
       hit_P2_3 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_E);
+      Keyboard.set_modifier(MODIFIERKEY_RIGHT_SHIFT);
+      Keyboard.set_key1(KEY_A);
       Keyboard.send_now();
     }
   }
@@ -409,8 +323,8 @@ void checkInputs() {
     if(!hit_P2_4) {
       hit_P2_4 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_S);
+      Keyboard.set_modifier(MODIFIERKEY_RIGHT_SHIFT);
+      Keyboard.set_key1(KEY_D);
       Keyboard.send_now();
     }
   }
@@ -418,8 +332,8 @@ void checkInputs() {
     if(!hit_P2_5) {
       hit_P2_5 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_U);
+      Keyboard.set_modifier(MODIFIERKEY_RIGHT_SHIFT);
+      Keyboard.set_key1(KEY_O);
       Keyboard.send_now();
     }
   }
@@ -427,8 +341,8 @@ void checkInputs() {
     if(!hit_P2_6) {
       hit_P2_6 = true;
       digitalWrite(LED, HIGH);
-      Keyboard.set_modifier(MODIFIERKEY_RIGHT_ALT);
-      Keyboard.set_key1(KEY_I);
+      Keyboard.set_modifier(MODIFIERKEY_RIGHT_SHIFT);
+      Keyboard.set_key1(KEY_P);
       Keyboard.send_now();
     }
   }
